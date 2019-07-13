@@ -39,7 +39,7 @@
                                        aria-describedby="startDateHelp" placeholder="Enter Start Date"
                                        data-toggle="tooltip" data-placement="bottom" title="Please enter Start Date" required>
                                 <div class="invalid-feedback">
-                                    Please enter Start Date
+                                    <label th:text="#{startDate.empty}"></label>
                                 </div>
                                 <div class="alert alert-danger" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">
                                 </div>
@@ -49,12 +49,12 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="endDate">End Date</label>
+                                <label for="endDate" th:text="#{label.endDate}"></label>
                                 <input type="date"  th:field="*{endDate}" class="form-control" id="endDate"
                                        aria-describedby="endDateHelp" placeholder="Enter End Date"
                                        data-toggle="tooltip" data-placement="bottom" title="Please enter End Date" required>
                                 <div class="invalid-feedback">
-                                    Please enter End Date
+                                    <label th:text="#{endDate.empty}"></label>
                                 </div>
                                 <div class="alert alert-danger" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">
                                 </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary float-right" id="calculate-btn">Calculate</button>
+                            <button type="submit" class="btn btn-primary float-right" id="calculate-btn"><label for="endDate" th:text="#{label.calculate}"></label></button>
                         </div>
                     </div>
                 </div>

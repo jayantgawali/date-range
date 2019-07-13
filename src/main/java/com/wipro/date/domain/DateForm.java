@@ -9,11 +9,11 @@ import java.util.Date;
 @ValidDateRange
 public class DateForm {
 
-    @NotNull
+    @NotNull(message = "startDate.empty")
     @DateTimeFormat (pattern = "yyyy-MM-dd")
     private Date startDate;
 
-    @NotNull
+    @NotNull(message = "endDate.empty")
     @DateTimeFormat (pattern = "yyyy-MM-dd")
     private Date endDate;
 

@@ -50,4 +50,23 @@ public class DateRangeControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(equalTo("{\"message\":\"End Date must be after Start Date\"}")));
     }
+
+    @Test
+    public void shouldReturnValidationErrorEndDate() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/calculate").content("{\"endDate\":\"\",\"startDate\":\"2019-07-20\"}")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(equalTo("{\"message\":\"Please provide End Date\"}")));
+    }
+
+    @Test
+    public void shouldReturnValidationErrorStartDate() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/calculate").content("{\"StartDate\":\"\",\"endDate\":\"2019-07-20\"}")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(equalTo("{\"message\":\"Please provide Start Date\"}")));
+    }
+
 }
